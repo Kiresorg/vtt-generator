@@ -2,14 +2,17 @@ const axios = require('axios');
 const FormData = require('form-data');
 const fs = require('fs');
 const path = require('path');
+const dotenv = require('dotenv');
 const {
   vttFormat,
   getAllFiles
 } = require('./utilities');
 
+dotenv.config();
+
 // Replace with your WhisperAI API endpoint and API key
 const WHISPER_API_URL = 'https://transcribe.whisperapi.com';
-const API_KEY = 'Hq39q0v69La7EF0fWbGLwC4vw7pfF9OQ';
+const API_KEY = process.env.API_KEY;
 
 // Function to upload the MP3 file and get the VTT file
 async function generateVTT(filePath) {
